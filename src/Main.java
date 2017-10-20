@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Main {
-    public static void alphabeticalSort (char[] symbolsArray, int[]frequencyArray){
+    public static void alphabeticalSort (char[] charactersArray, int[]frequencyArray){
         char element;               //<element> holds the value of an element from <symbolsArray>
         int elementASCII;           //<elementASCII> holds the ASCII number value of <element>
         char elementPlus;           //<elementPlus> is used to hold another value of an element of <symbolsArray> to compare to <element>
@@ -11,13 +11,13 @@ public class Main {
         int elementFreqPlus;        //<elementFreqPlus> is used to hold how many times <elementPlus> appears in the input
         int placeHolderFrequency;   //<placeHolderFrequency> is used as a "separate-container" to sort elements in <frequencyArray>
 
-        for (int i=0; i<symbolsArray.length-1; i++){
+        for (int i=0; i<charactersArray.length-1; i++){
 
-            for (int j = i+1; j<symbolsArray.length; j++ ) {
+            for (int j = i+1; j<charactersArray.length; j++) {
 
-                element = symbolsArray[i];
+                element = charactersArray[i];
                 elementASCII = (int) element;
-                elementPlus = symbolsArray[j];
+                elementPlus = charactersArray[j];
                 elementPlusASCII = (int) elementPlus;
 
                 elementFreq = frequencyArray[i];
@@ -25,8 +25,8 @@ public class Main {
 
                 if(elementASCII > elementPlusASCII){
                     placeholderSymbol = elementPlus;
-                    symbolsArray[j] = element;
-                    symbolsArray[i] = placeholderSymbol;
+                    charactersArray[j] = element;
+                    charactersArray[i] = placeholderSymbol;
 
                     placeHolderFrequency = elementFreqPlus;
                     frequencyArray[j] = elementFreq;
@@ -35,15 +35,14 @@ public class Main {
             }
         }
 
-        for (int i =0; i<symbolsArray.length; i++){
-            System.out.println(symbolsArray[i] + " freq: " + frequencyArray[i]);
+        for (int i =0; i<charactersArray.length; i++){
+            System.out.println(charactersArray[i] + " freq: " + frequencyArray[i]);
         }
         System.out.println();
         System.out.println();
-        return;
     }
 
-    public static void frequencySort(char[] symbolsArray, int[] frequencyArray){
+    public static void frequencySort(char[] charactersArray, int[] frequencyArray){
         char element;               //<element> holds the value of an element from <symbolsArray>
         int elementASCII;           //<elementASCII> holds the ASCII number value of <element>
         char elementPlus;           //<elementPlus> is used to hold another value of an element of <symbolsArray> to compare to <element>
@@ -52,34 +51,36 @@ public class Main {
         int elementFreq;            //<elementFreq> holds the number of times <element> appears in the input
         int elementFreqPlus;        //<elementFreqPlus> is used to hold how many times <elementPlus> appears in the input
         int placeHolderFrequency;   //<placeHolderFrequency> is used as a "separate-container" to sort elements in <frequencyArray>
-        for (int i=0; i<symbolsArray.length-1; i++){
 
-            for (int j = i+1; j<symbolsArray.length; j++ ) {
 
-                element = symbolsArray[i];
+        for (int i=0; i<charactersArray.length-1; i++){
+
+            for (int j = i+1; j<charactersArray.length; j++){
+
+                element = charactersArray[i];
                 elementASCII = (int) element;
-                elementPlus = symbolsArray[j];
+                elementPlus = charactersArray[j];
                 elementPlusASCII = (int) elementPlus;
 
                 elementFreq = frequencyArray[i];
                 elementFreqPlus = frequencyArray[j];
 
-                if(elementFreq < elementFreqPlus){
+                if (elementFreq < elementFreqPlus){
 
                     placeHolderFrequency = elementFreqPlus;
                     frequencyArray[j] = elementFreq;
                     frequencyArray[i] = placeHolderFrequency;
 
                     placeholderSymbol = elementPlus;
-                    symbolsArray[j] = element;
-                    symbolsArray[i] = placeholderSymbol;
-
+                    charactersArray[j] = element;
+                    charactersArray[i] = placeholderSymbol;
                 }
                 if (elementFreq == elementFreqPlus){
-                    if(elementASCII > elementPlusASCII){
+
+                    if (elementASCII > elementPlusASCII){
                         placeholderSymbol = elementPlus;
-                        symbolsArray[j] = element;
-                        symbolsArray[i] = placeholderSymbol;
+                        charactersArray[j] = element;
+                        charactersArray[i] = placeholderSymbol;
 
                         placeHolderFrequency = elementFreqPlus;
                         frequencyArray[j] = elementFreq;
@@ -91,19 +92,19 @@ public class Main {
         System.out.println("The sorted by frequency characters are:");
         System.out.println();
 
-        for (int i =0; i<symbolsArray.length; i++){
-            System.out.println(symbolsArray[i] + " freq: " + frequencyArray[i]);
+        for (int i =0; i<charactersArray.length; i++){
+            System.out.println(charactersArray[i] + " freq: " + frequencyArray[i]);
         }
         System.out.println();
         System.out.println();
-        return;
     }
 
     public static void charTypes(String duplicateInput2){
-        int textualCharacterCount = 0;
-        int numericalCharacterCount = 0;
-        int whiteSpaceCharacterCount = 0;
+        int textualCharacterCount = 0;      //Holds value of how many textual characters exist <input>
+        int numericalCharacterCount = 0;    //Holds value of how many numerical characters exist in <input>
+        int whiteSpaceCharacterCount = 0;   //Holds value of how many white spaces exist in <input>
 
+        //FOR loop counts how many textual, character, and whitespace characters exist in <input> (FOR loop does not count symbols)
         for(int i = 0; i < duplicateInput2.length(); i++){
             if (Character.isLetter(duplicateInput2.charAt(i))){
                 textualCharacterCount++;
@@ -117,6 +118,7 @@ public class Main {
         }
 
         int symbolCharacterCount = duplicateInput2.length() - textualCharacterCount - numericalCharacterCount - whiteSpaceCharacterCount;
+        //Holds value of how many symbols exist in <input>
 
         System.out.println("Textual Character Count: " + textualCharacterCount);
         System.out.println("Numerical Character Count: " + numericalCharacterCount);
@@ -124,15 +126,14 @@ public class Main {
         System.out.println("Symbol Character Count: " + symbolCharacterCount);
         System.out.println();
         System.out.println();
-        return;
     }
 
     public static void main(String args[]) {
 
-        int freq = 0;
-        int menu = 0;
-        int z = 0;
-        int howManySymbols = 0;
+        int freq = 0;   //Counter for how many times value occurs in the user inputted string
+        int menu = 0;   //Holds user input to access methods within the program
+        int z = 0;      //Incrementer for making arrays <charactersArray> and <frequencyArray>
+        int howManyCharacters = 0;
         Scanner scnr = new Scanner(System.in);
 
         System.out.println("Welcome to Character Sorter Program");
@@ -149,8 +150,8 @@ public class Main {
 
         System.out.println();
 
+        //The following nested FOR loop determines the size (<howManySymbols>) of <charactersArray> and <frequencyArray>
         for (int i = 0; i < duplicateInput1.length(); i++){
-
             char selected = duplicateInput1.charAt(i);
 
             if (selected != '\0'){
@@ -158,7 +159,7 @@ public class Main {
                 for (int j = 0; j < duplicateInput1.length(); j++) {
 
                     if (selected == duplicateInput1.charAt(j)) {
-                        howManySymbols++;
+                        howManyCharacters++;
                         duplicateInput1 = duplicateInput1.replace(selected, '\0');
                         break;
                     }
@@ -166,19 +167,22 @@ public class Main {
             }
         }
 
-        char[] symbolsArray = new char[howManySymbols];
-        int[] frequencyArray = new int[howManySymbols];
-
+        char[] charactersArray = new char[howManyCharacters];  //Initializes char array that will hold characters from the string
+        int[] frequencyArray = new int[howManyCharacters];     /*Initializes int array that will hold the frequency corresponding
+                                                                 to each element in char array*/
+        //The following FOR loop inserts values into <charactersArray> and <frequencyArray>
         for (int i = 0; i < input.length(); ++i) {
             char selected = input.charAt(i);
+
             if (selected != '\0') {
+
                 for (int j = 0; j < input.length(); ++j) {
                     if (selected == input.charAt(j)) {
                         freq++;
                     }
                 }
                 input = input.replace(selected, '\0');
-                symbolsArray[z] = selected;
+                charactersArray[z] = selected;
                 frequencyArray[z] = freq;
                 freq = 0;
                 z++;
@@ -194,29 +198,28 @@ public class Main {
             System.out.println("4. Exit");
 
             try {
+                menu = scnr.nextInt();             //Takes in input into <menu>
 
-                menu = scnr.nextInt();              //Takes in input into <menu>
-
-                if ((menu > 4) || (menu < 1)) {     //Determines whether the user entered an integer greater then 4 or less then one.  If so, it's thrown.
+                if ((menu > 4) || (menu < 1)){     //Determines whether the user entered an integer greater then 4 or less then one.  If so, it's thrown.
                     throw new Exception();
                 }
-                if (menu == 1) {
-                    alphabeticalSort(symbolsArray, frequencyArray); //Calls method alphabeticalSort
+                if (menu == 1){
+                    alphabeticalSort(charactersArray, frequencyArray); //Calls method alphabeticalSort
                 }
-                if (menu == 2) {
-                    frequencySort(symbolsArray, frequencyArray);    //Calls method frequencySort
+                if (menu == 2){
+                    frequencySort(charactersArray, frequencyArray);    //Calls method frequencySort
                 }
-                if (menu == 3) {
-                    charTypes(duplicateInput2);                     //Calls method charTypes
+                if (menu == 3){
+                    charTypes(duplicateInput2);                        //Calls method charTypes
                 }
-                if (menu == 4) {                                    //Ends the program
+                if (menu == 4){                                        //Ends the program
                     System.out.println();
                     System.out.println("Character Sorter Exited Successfully");
                     break;
                 }
-
-            } catch (Throwable Exception) {                         //If user enters invalid input into <menu>
+            } catch (Throwable Exception) {                            //If user enters invalid input into <menu>
                 System.out.println("Error, bad input, please enter a number 1-4");
+                System.out.println();
                 scnr.nextLine();
             }
         }
