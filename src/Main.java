@@ -2,11 +2,11 @@ import java.util.*;
 
 public class Main {
     public static void alphabeticalSort (char[] charactersArray, int[]frequencyArray){
-        char element;               //<element> holds the value of an element from <symbolsArray>
+        char element;               //<element> holds the value of an element from <charactersArray>
         int elementASCII;           //<elementASCII> holds the ASCII number value of <element>
-        char elementPlus;           //<elementPlus> is used to hold another value of an element of <symbolsArray> to compare to <element>
+        char elementPlus;           //<elementPlus> is used to hold another value of an element of <charactersArray> to compare to <element>
         int elementPlusASCII;       //<elementPlusASCII> holds the ASCII number value of <elementPlus>
-        char placeholderSymbol;     //<placeHolderSymbol> is used as a "separate-container" to sort elements in the <symbolsArray>
+        char placeholderSymbol;     //<placeHolderSymbol> is used as a "separate-container" to sort elements in the <charactersArray>
         int elementFreq;            //<elementFreq> holds the number of times <element> appears in the input
         int elementFreqPlus;        //<elementFreqPlus> is used to hold how many times <elementPlus> appears in the input
         int placeHolderFrequency;   //<placeHolderFrequency> is used as a "separate-container" to sort elements in <frequencyArray>
@@ -15,15 +15,17 @@ public class Main {
 
             for (int j = i+1; j<charactersArray.length; j++) {
 
-                element = charactersArray[i];
-                elementASCII = (int) element;
-                elementPlus = charactersArray[j];
-                elementPlusASCII = (int) elementPlus;
+                element = charactersArray[i];           //<element> takes in character of an element in <charactersArray>
+                elementASCII = (int) element;           //<elementASCII> takes in the ASCII number representing what is in <element>
+                elementPlus = charactersArray[j];       //<elementPlus> takes in a different character of an element in <charactersArray>
+                elementPlusASCII = (int) elementPlus;   //<elementPlus> takes in the ASCII number representing what is in <elementPlus>
 
-                elementFreq = frequencyArray[i];
-                elementFreqPlus = frequencyArray[j];
+                elementFreq = frequencyArray[i];        //<elementFreq> takes in the frequency of <element>
+                elementFreqPlus = frequencyArray[j];    //<elementFreqPlus> takes in the frequency of <elementPlus>
 
-                if(elementASCII > elementPlusASCII){
+                if(elementASCII > elementPlusASCII){    /*If <elementASCII> is greater than <elementPlusASCII> then the
+                                                          elements are switched in <charactersArray>, as well as their
+                                                          corresponding frequencies in <frequencyArray>*/
                     placeholderSymbol = elementPlus;
                     charactersArray[j] = element;
                     charactersArray[i] = placeholderSymbol;
@@ -35,7 +37,7 @@ public class Main {
             }
         }
 
-        for (int i =0; i<charactersArray.length; i++){
+        for (int i =0; i<charactersArray.length; i++){  //This FOR loop prints out the output
             System.out.println(charactersArray[i] + " freq: " + frequencyArray[i]);
         }
         System.out.println();
@@ -43,11 +45,11 @@ public class Main {
     }
 
     public static void frequencySort(char[] charactersArray, int[] frequencyArray){
-        char element;               //<element> holds the value of an element from <symbolsArray>
+        char element;               //<element> holds the value of an element from <charactersArray>
         int elementASCII;           //<elementASCII> holds the ASCII number value of <element>
-        char elementPlus;           //<elementPlus> is used to hold another value of an element of <symbolsArray> to compare to <element>
+        char elementPlus;           //<elementPlus> is used to hold another value of an element of <charactersArray> to compare to <element>
         int elementPlusASCII;       //<elementPlusASCII> holds the ASCII number value of <elementPlus>
-        char placeholderSymbol;     //<placeHolderSymbol> is used as a "separate-container" to sort elements in the <symbolsArray>
+        char placeholderSymbol;     //<placeHolderSymbol> is used as a "separate-container" to sort elements in the <charactersArray>
         int elementFreq;            //<elementFreq> holds the number of times <element> appears in the input
         int elementFreqPlus;        //<elementFreqPlus> is used to hold how many times <elementPlus> appears in the input
         int placeHolderFrequency;   //<placeHolderFrequency> is used as a "separate-container" to sort elements in <frequencyArray>
@@ -57,15 +59,17 @@ public class Main {
 
             for (int j = i+1; j<charactersArray.length; j++){
 
-                element = charactersArray[i];
-                elementASCII = (int) element;
-                elementPlus = charactersArray[j];
-                elementPlusASCII = (int) elementPlus;
+                element = charactersArray[i];           //<element> takes in character of an element in <charactersArray>
+                elementASCII = (int) element;           //<elementASCII> takes in the ASCII number representing what is in <element>
+                elementPlus = charactersArray[j];       //<elementPlus> takes in a different character of an element in <charactersArray>
+                elementPlusASCII = (int) elementPlus;   //<elementPlus> takes in the ASCII number representing what is in <elementPlus>
 
-                elementFreq = frequencyArray[i];
-                elementFreqPlus = frequencyArray[j];
+                elementFreq = frequencyArray[i];        //<elementFreq> takes in the frequency of <element>
+                elementFreqPlus = frequencyArray[j];    //<elementFreqPlus> takes in the frequency of <elementPlus>
 
-                if (elementFreq < elementFreqPlus){
+                if (elementFreq < elementFreqPlus){     /*If <elementFreq> is less then <elementFreqPlus> then their
+                                                          elements are switched in <charactersArray> and <frequencyArray>,
+                                                          according to their frequency*/
 
                     placeHolderFrequency = elementFreqPlus;
                     frequencyArray[j] = elementFreq;
@@ -75,7 +79,9 @@ public class Main {
                     charactersArray[j] = element;
                     charactersArray[i] = placeholderSymbol;
                 }
-                if (elementFreq == elementFreqPlus){
+                if (elementFreq == elementFreqPlus){    /*If <elementFreq> is equal to <elementFreqPlus> then their
+                                                          elements are switched in <charactersArray> and <frequencyArray>,
+                                                          according to their ASCII symbol position*/
 
                     if (elementASCII > elementPlusASCII){
                         placeholderSymbol = elementPlus;
@@ -92,7 +98,7 @@ public class Main {
         System.out.println("The sorted by frequency characters are:");
         System.out.println();
 
-        for (int i =0; i<charactersArray.length; i++){
+        for (int i =0; i<charactersArray.length; i++){      //This FOR loop prints out the output
             System.out.println(charactersArray[i] + " freq: " + frequencyArray[i]);
         }
         System.out.println();
